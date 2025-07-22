@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johnadora Retail Market – Daily Essentials Store</title>
+    <meta name="description" content="Johnadora Retail Market – Your Neighborhood Store for Everyday Needs. Daily essentials, affordable prices, and community service in Parañaque City.">
+    <link rel="icon" type="image/png" href="image/FAVICON.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,700,400|Roboto:400,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D52B2B;
+            --secondary: #232323;
+            --accent: #F9F9F9;
+            --gold: #F5D547;
+            --dark: #232323;
+            --font-main: 'Montserrat', Arial, sans-serif;
+            --font-bold: 'Montserrat', Arial, sans-serif;
+            --font-body: 'Roboto', Arial, sans-serif;
+            --basket-size: 58px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background: var(--accent);
+            font-family: var(--font-body);
+            color: var(--dark);
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .header-wrapper {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+            flex-wrap: wrap;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .logo-img {
+            height: 70px;
+            width: 70px;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-img img {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+        }
+        .brand-text {
+            display: block;
+        }
+        .brand-title {
+            font-family: var(--font-bold);
+            font-weight: 900;
+            font-size: 2.1rem;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-bottom: 0;
+            margin-top: -4px;
+        }
+        .brand-subtitle {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 7px;
+            color: var(--primary);
+            margin-top: -8px;
+            margin-bottom: 0;
+        }
+        nav {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            transition: max-height 0.25s;
+        }
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            margin-left: 1rem;
+        }
+        .burger span {
+            display: block;
+            height: 4px;
+            width: 28px;
+            background: var(--secondary);
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.25s;
+        }
+        @media (max-width: 700px) {
+            .header-wrapper { flex-direction: row; gap: 0.5rem; }
+            .logo-block { justify-content: flex-start; }
+            .burger {
+                display: flex;
+            }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                max-height: 0;
+                overflow: hidden;
+                z-index: 998;
+            }
+            nav.open {
+                max-height: 420px;
+                padding-bottom: 0.7rem;
+                border-bottom: 2px solid var(--primary);
+            }
+            nav a {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #eee;
+                font-size: 1.13rem;
+                color: var(--secondary);
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+        }
+        .hero {
+            background: linear-gradient(120deg, #fff 60%, var(--primary) 100%);
+            color: var(--secondary);
+            padding: 2.2rem 0 1.6rem 0;
+            border-bottom: 2px solid var(--primary);
+        }
+        .hero-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .hero-content h1 {
+            font-family: var(--font-bold);
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+        .hero-content p {
+            font-size: 1.17rem;
+            margin-bottom: 1.15rem;
+        }
+        .hero-content em {
+            font-style: italic;
+            color: var(--primary);
+            font-size: 1.07rem;
+        }
+        @media (max-width: 700px) {
+            .hero-content h1 { font-size: 1.5rem; }
+        }
+        .section {
+            max-width: 1140px;
+            margin: 2.2rem auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            font-family: var(--font-bold);
+            color: var(--primary);
+            font-size: 1.42rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+        }
+        .about {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(213,43,43,0.06);
+            padding: 1.45rem;
+            margin-bottom: 2rem;
+        }
+        .about p, .about ul {
+            margin-bottom: 1rem;
+            font-size: 1.01rem;
+        }
+        .about ul {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.1rem;
+        }
+        .about ul li {
+            margin-bottom: 0.25rem;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(213,43,43,0.07);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.15s;
+            border: 1px solid #f2f2f2;
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 16px rgba(213,43,43,0.15);
+            border-color: var(--primary);
+        }
+        .product-img {
+            width: 100%;
+            height: 160px;
+            background: #ffeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img img {
+            max-width: 90%;
+            max-height: 140px;
+            object-fit: contain;
+        }
+        .product-info {
+            padding: 1rem;
+            flex-grow: 1;
+        }
+        .product-title {
+            font-size: 1.12rem;
+            font-family: var(--font-bold);
+            font-weight: 900;
+            color: var(--secondary);
+            letter-spacing: 1px;
+        }
+        .product-desc {
+            font-size: 0.98rem;
+            margin: 0.5rem 0;
+            color: #444;
+        }
+        .product-meta {
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+            color: #666;
+        }
+        .product-price {
+            font-size: 1.13rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+        .add-cart-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-bold);
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.15s;
+        }
+        .add-cart-btn:hover {
+            background: var(--secondary);
+            color: #fff;
+        }
+        .cart-section {
+            background: #ffeaea;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(213,43,43,0.05);
+            padding: 1.5rem;
+            margin: 2.7rem auto 2rem auto;
+            max-width: 600px;
+        }
+        .cart-title { 
+            font-family: var(--font-bold);
+            font-size: 1.22rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .cart-items {
+            margin-bottom: 1rem;
+        }
+        .cart-empty {
+            color: #888;
+            font-size: 1rem;
+        }
+        .cart-total {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .checkout-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-bold);
+            font-weight: 900;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px rgba(213,43,43,0.07);
+        }
+        .checkout-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 900px) {
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+        .contact-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(213,43,43,0.06);
+            padding: 1.5rem;
+        }
+        .contact-info {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .testimonials {
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 1.1rem 1.5rem;
+            box-shadow: 0 1px 6px rgba(213,43,43,0.04);
+            margin-bottom: 2rem;
+        }
+        .testimonial {
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: #444;
+        }
+        .testimonial:last-child { margin-bottom: 0;}
+        .faq-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(213,43,43,0.06);
+            margin-bottom: 2rem;
+        }
+        .faq-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .faq-q {
+            font-weight: 900;
+            color: var(--primary);
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .delivery-info {
+            background: #ffeaea;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(213,43,43,0.06);
+            margin-bottom: 2rem;
+        }
+        footer {
+            background: var(--secondary);
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+            margin-top: 2rem;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: underline;
+            font-size: 1.01rem;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            font-size: 0.99rem;
+            color: #e5e5e5;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 700px) {
+            .header-wrapper, .hero-content, .section, .footer-content { padding: 0 0.8rem; }
+            .footer-links { flex-direction: column; gap: 0.5rem;}
+        }
+        /* Cart button fixed */
+        .cart-fab {
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+            z-index: 1001;
+            background: var(--primary);
+            color: #fff;
+            width: var(--basket-size);
+            height: var(--basket-size);
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(213,43,43,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-size: 2rem;
+            transition: background 0.2s;
+        }
+        .cart-fab:hover {
+            background: var(--secondary);
+        }
+        .cart-fab-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 14px;
+            padding: 0 7px;
+            min-width: 18px;
+            min-height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(213,43,43,0.10);
+        }
+        @media (max-width: 700px) {
+            .cart-fab {
+                right: 16px;
+                bottom: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+            }
+            .cart-fab-count {
+                font-size: 0.87rem;
+                top: 7px;
+                right: 7px;
+                min-width: 15px;
+                min-height: 15px;
+                padding: 0 5px;
+            }
+        }
+        /* Cart pop-up modal */
+        .cart-modal-backdrop {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.21);
+            z-index: 1100;
+            display: none;
+        }
+        .cart-modal {
+            position: fixed;
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%,50%);
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(213,43,43,0.29);
+            min-width: 320px;
+            max-width: 95vw;
+            max-height: 80vh;
+            z-index: 1101;
+            display: none;
+            flex-direction: column;
+            padding: 1.5rem 1.3rem;
+        }
+        .cart-modal.show, .cart-modal-backdrop.show {
+            display: flex;
+        }
+        .cart-modal-header {
+            font-family: var(--font-bold);
+            font-weight: 900;
+            font-size: 1.18rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .cart-modal-items {
+            overflow-y: auto;
+            max-height: 240px;
+            margin-bottom: 1rem;
+        }
+        .cart-modal-empty {
+            color: #888;
+            font-size: 1rem;
+        }
+        .cart-modal-total {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .cart-modal-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+        .cart-modal-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-bold);
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px rgba(213,43,43,0.07);
+            transition: background 0.17s;
+        }
+        .cart-modal-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        .cart-modal-btn.close {
+            background: #eee;
+            color: var(--secondary);
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+        .cart-modal-remove {
+            background: none;
+            color: var(--primary);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 6px;
+        }
+        @media (max-width: 700px) {
+            .cart-modal {
+                min-width: 90vw;
+                max-width: 98vw;
+                padding: 1.1rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo-block">
+                <div class="logo-img">
+                    <img src="image/LOGO.png" alt="Johnadora Retail Market Logo">
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">JOHNADORA</h1>
+                    <div class="brand-subtitle">RETAIL MARKET</div>
+                </div>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav">
+                <a href="#about">About Us</a>
+                <a href="#products">Products</a>
+                <a href="#cart">Cart</a>
+                <a href="#contact">Contact</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Johnadora Retail Market</h1>
+            <p>Your Neighborhood Store for Everyday Needs</p>
+            <p>At Johnadora Retail Market, we make daily shopping easy, affordable, and always within reach. Located in the heart of Parañaque City, we offer a wide range of essential items — from pantry staples to personal care products — all at prices that suit every budget.<br>
+            <em>Para sa inyong pang-araw-araw na pangangailangan, dito na kayo sa Johnadora!</em></p>
+        </div>
+    </section>
+    <main>
+        <section class="section about" id="about">
+            <h2 class="section-title">Our Story</h2>
+            <p>Established in 2020, Johnadora Retail Market was founded with one simple goal: to provide affordable and reliable daily essentials for every Filipino household. What started as a small sari-sari store has grown into a full-service convenience market proudly serving Barangay San Isidro and nearby areas.</p>
+            <p>At Johnadora, we value:</p>
+            <ul>
+                <li><strong>Integrity:</strong> We only sell what we trust in our own homes.</li>
+                <li><strong>Community:</strong> Our customers are our kapitbahay. We know your names, and we listen to your needs.</li>
+                <li><strong>Affordability:</strong> We believe that quality daily goods should never be expensive.</li>
+            </ul>
+            <p>Every item we stock is handpicked with the Filipino family in mind — practical, affordable, and sulit.<br>
+            <em>"Mula sa aming pamilya, para sa inyong pamilya."</em></p>
+        </section>
+        <section class="section" id="products">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder1.png" alt="Canned Goods">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Century Tuna (Canned Good)</div>
+                        <div class="product-desc">Protein-packed, easy to prepare.</div>
+                        <div class="product-meta">Qty: 10 | $2.49</div>
+                        <div class="product-price">$2.49</div>
+                        <button class="add-cart-btn" data-product="Century Tuna" data-price="2.49">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder2.png" alt="Instant Noodles">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Lucky Me! Instant Noodles</div>
+                        <div class="product-desc">Quick, delicious comfort food.</div>
+                        <div class="product-meta">Qty: 16 | $0.79</div>
+                        <div class="product-price">$0.79</div>
+                        <button class="add-cart-btn" data-product="Lucky Me! Instant Noodles" data-price="0.79">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder3.png" alt="Rice">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Premium Dinorado Rice 1kg</div>
+                        <div class="product-desc">Soft, fragrant, ideal for daily meals.</div>
+                        <div class="product-meta">Qty: 8 | $3.19</div>
+                        <div class="product-price">$3.19</div>
+                        <button class="add-cart-btn" data-product="Premium Dinorado Rice 1kg" data-price="3.19">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder4.png" alt="Laundry Soap">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Ariel Laundry Soap</div>
+                        <div class="product-desc">Powerful cleaning, gentle on clothes.</div>
+                        <div class="product-meta">Qty: 12 | $1.39</div>
+                        <div class="product-price">$1.39</div>
+                        <button class="add-cart-btn" data-product="Ariel Laundry Soap" data-price="1.39">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder5.png" alt="Shampoo & Conditioner">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Head & Shoulders Shampoo</div>
+                        <div class="product-desc">Fresh, anti-dandruff formula.</div>
+                        <div class="product-meta">Qty: 7 | $2.29</div>
+                        <div class="product-price">$2.29</div>
+                        <button class="add-cart-btn" data-product="Head & Shoulders Shampoo" data-price="2.29">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="image/placeholder6.png" alt="Fresh Bread">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Fresh Pandesal (6 pcs)</div>
+                        <div class="product-desc">Soft, oven-baked each morning.</div>
+                        <div class="product-meta">Qty: 14 | $1.09</div>
+                        <div class="product-price">$1.09</div>
+                        <button class="add-cart-btn" data-product="Fresh Pandesal (6 pcs)" data-price="1.09">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cart-section" id="cart">
+            <div class="cart-title">🛒 Your Cart</div>
+            <div class="cart-items" id="cart-items">
+                <div class="cart-empty">Your cart is empty.</div>
+            </div>
+            <div class="cart-total" id="cart-total"></div>
+            <button class="checkout-btn" id="checkout-btn" disabled>Checkout</button>
+        </section>
+        <section class="section contact-section" id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="info-grid">
+                <div class="contact-info">
+                    <strong>Store Address:</strong><br>
+                    #122 Malvar Street, Barangay San Isidro<br>
+                    City of Parañaque, NCR, Philippines<br><br>
+                    <strong>Mobile:</strong> +63 908 734 6291<br>
+                    <strong>Email:</strong> <a href="mailto:contact@johnadoramarket.com">contact@johnadoramarket.com</a><br>
+                    <strong>Website:</strong> <a href="https://www.johnadoramarket.com">www.johnadoramarket.com</a><br>
+                    <strong>Business Hours:</strong> Monday to Saturday, 8:00 AM – 6:00 PM<br>
+                    <strong>VAT Registration No.:</strong> 004-276-832-000
+                </div>
+                <div>
+                    <h3 style="margin-top:0.2rem;">Customer Testimonials</h3>
+                    <div class="testimonials">
+                        <div class="testimonial">“Johnadora is my go-to for daily needs! Sobrang convenient and mura pa.”<br><span style="color:var(--primary);">– Rica D., San Isidro</span></div>
+                        <div class="testimonial">“Laging may stock ang tindahan nila kahit during busy days. Super bait pa ng mga staff!”<br><span style="color:var(--primary);">– Aljon M., Parañaque</span></div>
+                        <div class="testimonial">“Their weekly promos help me save a lot. Di na kailangan pumunta ng malayo!”<br><span style="color:var(--primary);">– Tanya G., Sucat</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section faq-section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <ul class="faq-list">
+                <li>
+                    <div class="faq-q">Q: Do you offer delivery?</div>
+                    <div>A: We're currently preparing our in-house delivery service. Stay tuned for updates!</div>
+                </li>
+                <li>
+                    <div class="faq-q">Q: Do you accept GCash or digital payments?</div>
+                    <div>A: Yes! We accept GCash, Maya, and bank transfers.</div>
+                </li>
+                <li>
+                    <div class="faq-q">Q: Do you offer senior citizen or PWD discounts?</div>
+                    <div>A: Yes, just present a valid ID upon checkout.</div>
+                </li>
+                <li>
+                    <div class="faq-q">Q: Can I order in advance?</div>
+                    <div>A: Yes. Call or message us and we’ll prepare your order for pickup.</div>
+                </li>
+            </ul>
+        </section>
+        <section class="section delivery-info">
+            <h2 class="section-title">🛵 Delivery Information (Coming Soon)</h2>
+            <p>We’re expanding to offer same-day delivery service within select areas of Parañaque:</p>
+            <ul>
+                <li>Barangay San Isidro</li>
+                <li>Barangay Don Bosco</li>
+                <li>Barangay San Antonio</li>
+                <li>Sucat and nearby zones</li>
+            </ul>
+            <p>Ordering Methods (Coming Soon):</p>
+            <ul>
+                <li>Call/Text Order with GCash payment</li>
+                <li>Facebook Page orders</li>
+                <li>Viber order form</li>
+            </ul>
+            <em>Stay connected as we roll out delivery soon!</em>
+        </section>
+    </main>
+    <!-- Floating Cart Button -->
+    <button class="cart-fab" id="cart-fab" aria-label="Cart">
+        <span style="display:inline-block;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="vertical-align:middle;" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="14" cy="14" rx="13" ry="13" fill="#fff" stroke="#D52B2B" stroke-width="2"/>
+                <path d="M9.5 12V10.5C9.5 8.84315 10.8431 7.5 12.5 7.5H15.5C17.1569 7.5 18.5 8.84315 18.5 10.5V12" stroke="#D52B2B" stroke-width="1.5"/>
+                <rect x="7.5" y="12" width="13" height="7" rx="2" stroke="#D52B2B" stroke-width="1.5"/>
+                <circle cx="11.5" cy="19" r="1" fill="#D52B2B"/>
+                <circle cx="16.5" cy="19" r="1" fill="#D52B2B"/>
+            </svg>
+        </span>
+        <span class="cart-fab-count" id="cart-fab-count">0</span>
+    </button>
+    <!-- Cart Modal Pop-up -->
+    <div class="cart-modal-backdrop" id="cart-modal-backdrop"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-header">🛒 Shopping Cart</div>
+        <div class="cart-modal-items" id="cart-modal-items">
+            <div class="cart-modal-empty">Your cart is empty.</div>
+        </div>
+        <div class="cart-modal-total" id="cart-modal-total"></div>
+        <div class="cart-modal-actions">
+            <button class="cart-modal-btn close" id="cart-modal-close">Close</button>
+            <button class="cart-modal-btn" id="cart-modal-checkout" disabled>Checkout</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="refund-policy.html">Refund Policy</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Johnadora Retail Market. All rights reserved.<br>
+                #122 Malvar Street, Barangay San Isidro, Parañaque, NCR, Philippines | VAT Reg. No.: 004-276-832-000
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Burger button for mobile navigation
+        document.addEventListener("DOMContentLoaded", function() {
+            var burger = document.getElementById("burger");
+            var nav = document.getElementById("nav");
+            burger.addEventListener("click", function() {
+                nav.classList.toggle("open");
+                burger.classList.toggle("active");
+            });
+            // Hide nav on link click (mobile)
+            var navLinks = nav.querySelectorAll("a");
+            navLinks.forEach(function(link) {
+                link.addEventListener("click", function() {
+                    if (window.innerWidth <= 700) {
+                        nav.classList.remove("open");
+                        burger.classList.remove("active");
+                    }
+                });
+            });
+        });
+
+        // Cart logic (shared for page and modal)
+        const cart = [];
+        function updateCart() {
+            // Update main cart section
+            const cartItemsDiv = document.getElementById('cart-items');
+            const cartTotalDiv = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            cartItemsDiv.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+                cartTotalDiv.textContent = '';
+                checkoutBtn.disabled = true;
+            } else {
+                let total = 0;
+                cart.forEach((item, idx) => {
+                    total += item.price * item.qty;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.style.marginBottom = '0.6rem';
+                    itemDiv.innerHTML = `
+                        <strong>${item.name}</strong> &times; ${item.qty} <span style="color:#666;">($${item.price.toFixed(2)} each)</span>
+                        <button style="margin-left:6px;background:none;color:var(--primary);border:none;cursor:pointer;font-size:1rem;" onclick="removeCartItem(${idx})" title="Remove">&#10005;</button>
+                    `;
+                    cartItemsDiv.appendChild(itemDiv);
+                });
+                cartTotalDiv.textContent = `Total: $${total.toFixed(2)}`;
+                checkoutBtn.disabled = false;
+            }
+            // Update floating fab count
+            document.getElementById('cart-fab-count').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+            // Update modal content too
+            updateCartModal();
+        }
+        function removeCartItem(idx) {
+            cart.splice(idx, 1);
+            updateCart();
+        }
+        document.querySelectorAll('.add-cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const name = btn.getAttribute('data-product');
+                const price = parseFloat(btn.getAttribute('data-price'));
+                const existing = cart.find(item => item.name === name);
+                if (existing) {
+                    existing.qty++;
+                } else {
+                    cart.push({ name, price, qty: 1 });
+                }
+                updateCart();
+            });
+        });
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            window.location.href = "order-summary.html";
+        });
+
+        // Floating cart button and modal logic
+        const cartFab = document.getElementById('cart-fab');
+        const cartModalBackdrop = document.getElementById('cart-modal-backdrop');
+        const cartModal = document.getElementById('cart-modal');
+        const cartModalClose = document.getElementById('cart-modal-close');
+        const cartModalCheckout = document.getElementById('cart-modal-checkout');
+        function updateCartModal() {
+            const itemsDiv = document.getElementById('cart-modal-items');
+            const totalDiv = document.getElementById('cart-modal-total');
+            cartModalCheckout.disabled = cart.length === 0;
+            itemsDiv.innerHTML = '';
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = '<div class="cart-modal-empty">Your cart is empty.</div>';
+                totalDiv.textContent = '';
+            } else {
+                let total = 0;
+                cart.forEach((item, idx) => {
+                    total += item.price * item.qty;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.style.marginBottom = '0.6rem';
+                    itemDiv.innerHTML = `
+                        <strong>${item.name}</strong> &times; ${item.qty} <span style="color:#666;">($${item.price.toFixed(2)} each)</span>
+                        <button class="cart-modal-remove" onclick="removeCartItem(${idx})" title="Remove">&#10005;</button>
+                    `;
+                    itemsDiv.appendChild(itemDiv);
+                });
+                totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+            }
+        }
+        function showCartModal() {
+            cartModal.classList.add('show');
+            cartModalBackdrop.classList.add('show');
+            updateCartModal();
+        }
+        function hideCartModal() {
+            cartModal.classList.remove('show');
+            cartModalBackdrop.classList.remove('show');
+        }
+        cartFab.addEventListener('click', function() {
+            showCartModal();
+        });
+        cartModalBackdrop.addEventListener('click', function() {
+            hideCartModal();
+        });
+        cartModalClose.addEventListener('click', function() {
+            hideCartModal();
+        });
+        cartModalCheckout.addEventListener('click', function() {
+            hideCartModal();
+            window.location.href = "order-summary.html";
+        });
+
+        // Init cart updates
+        updateCart();
+    </script>
+</body>
+</html>
