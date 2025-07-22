@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary – Johnadora Retail Market</title>
+    <meta name="description" content="Review your order and submit your purchase at Johnadora Retail Market. Your trusted store for daily essentials in Parañaque.">
+    <link rel="icon" type="image/png" href="image/FAVICON.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,700,400|Roboto:400,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D52B2B;
+            --secondary: #232323;
+            --accent: #F9F9F9;
+            --gold: #F5D547;
+            --dark: #232323;
+            --font-main: 'Montserrat', Arial, sans-serif;
+            --font-bold: 'Montserrat', Arial, sans-serif;
+            --font-body: 'Roboto', Arial, sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background: var(--accent);
+            font-family: var(--font-body);
+            color: var(--dark);
+        }
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .header-wrapper {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+            flex-wrap: wrap;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .logo-img {
+            height: 60px;
+            width: 60px;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-img img {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+        }
+        .brand-text {
+            display: block;
+        }
+        .brand-title {
+            font-family: var(--font-bold);
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-bottom: 0;
+            margin-top: -4px;
+        }
+        .brand-subtitle {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: var(--primary);
+            margin-top: -8px;
+            margin-bottom: 0;
+        }
+        .order-container {
+            max-width: 550px;
+            margin: 2.5rem auto 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px rgba(213,43,43,0.08);
+            padding: 2rem 1.5rem;
+        }
+        .order-title {
+            font-family: var(--font-bold);
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .order-steps {
+            font-size: 1rem;
+            margin-bottom: 1.7rem;
+            background: #ffeaea;
+            border-radius: 7px;
+            padding: 1rem 1.1rem;
+        }
+        .order-list {
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+        .order-list li {
+            padding: 0.85rem 0.7rem;
+            border-bottom: 1px solid #f3f3f3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+        }
+        .order-list li:last-child {
+            border-bottom: none;
+        }
+        .order-list .item-title {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .order-list .item-detail {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .order-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 1.2rem 0;
+            border-top: 2px solid var(--primary);
+            padding-top: 1rem;
+        }
+        .order-form {
+            margin: 0.8rem 0 0 0;
+        }
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+        label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            margin-bottom: 0.2rem;
+            transition: border 0.15s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+            border: 1.5px solid var(--primary);
+            outline: none;
+        }
+        .order-form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.3rem;
+        }
+        .submit-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.7rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-bold);
+            font-weight: 900;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(213,43,43,0.08);
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        .cancel-btn {
+            background: #eee;
+            color: var(--secondary);
+            font-weight: bold;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .confirmation-panel {
+            padding: 2rem 1.2rem;
+            background: #ffeaea;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(213,43,43,0.09);
+            text-align: left;
+            display: none;
+            margin-top: 2rem;
+        }
+        .confirmation-title {
+            font-family: var(--font-bold);
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        .confirmation-text {
+            font-size: 1.05rem;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+        }
+        .confirmation-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+        .confirm-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: var(--font-bold);
+            font-weight: 900;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px rgba(213,43,43,0.07);
+            transition: background 0.17s;
+        }
+        .confirm-btn:hover {
+            background: var(--secondary);
+        }
+        .meta-note {
+            font-size: 0.98rem;
+            color: #999;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        .success-panel {
+            padding: 2rem 1.2rem;
+            background: #e7ffe7;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(48,107,52,0.09);
+            text-align: left;
+            display: none;
+            margin-top: 2rem;
+        }
+        .success-title {
+            font-family: var(--font-bold);
+            font-size: 1.15rem;
+            color: #306B34;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        .success-text {
+            font-size: 1.03rem;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+        }
+        @media (max-width: 700px) {
+            .order-container {
+                max-width: 98vw;
+                padding: 1.1rem 0.5rem;
+            }
+        }
+        footer {
+            background: var(--secondary);
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+            margin-top: 2rem;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: underline;
+            font-size: 1.01rem;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            font-size: 0.99rem;
+            color: #e5e5e5;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 700px) {
+            .footer-content { padding: 0 0.8rem; }
+            .footer-links { flex-direction: column; gap: 0.5rem;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo-block">
+                <div class="logo-img">
+                    <img src="image/LOGO.png" alt="Johnadora Retail Market Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">JOHNADORA</span>
+                    <span class="brand-subtitle">RETAIL MARKET</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="order-container" id="order-summary-section">
+            <div class="order-title">Order Review & Submission</div>
+            <div class="order-steps">
+                <strong>Thank you for shopping with us!</strong> Before you submit your order, please review the details below. Once submitted, a representative from our team will reach out to confirm all product choices, colors, and availability. Please verify these details with our team before proceeding to payment.<br><br>
+                <em>After verification, you will receive a secure payment link based on your selected payment method. Kindly complete your payment within <strong>24 hours</strong> to ensure your order is processed. Orders unpaid after this period will be automatically cancelled.</em>
+            </div>
+            <ul class="order-list" id="order-list">
+                <li>
+                    <span class="item-title">Century Tuna (Canned Good) × <span id="qty-tuna">1</span></span>
+                    <span class="item-detail">$2.49</span>
+                </li>
+                <li>
+                    <span class="item-title">Lucky Me! Instant Noodles × <span id="qty-noodles">2</span></span>
+                    <span class="item-detail">$1.58</span>
+                </li>
+                <li>
+                    <span class="item-title">Premium Dinorado Rice 1kg × <span id="qty-rice">1</span></span>
+                    <span class="item-detail">$3.19</span>
+                </li>
+                <li>
+                    <span class="item-title">Ariel Laundry Soap × <span id="qty-soap">1</span></span>
+                    <span class="item-detail">$1.39</span>
+                </li>
+            </ul>
+            <div class="order-total-row">
+                <span>Total Amount</span>
+                <span id="order-total">$8.65</span>
+            </div>
+            <form class="order-form" id="order-form" autocomplete="off">
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" name="customer-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Email Address</label>
+                    <input type="email" id="customer-email" name="customer-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Mobile Number</label>
+                    <input type="text" id="customer-phone" name="customer-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Delivery Address</label>
+                    <textarea id="customer-address" name="customer-address" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Preferred Payment Method</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="" disabled selected>Select Method</option>
+                        <option value="GCash">GCash</option>
+                        <option value="Maya">Maya</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Cash on Delivery">Cash on Delivery</option>
+                    </select>
+                </div>
+                <div class="order-form-actions">
+                    <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">Cancel</button>
+                    <button type="submit" class="submit-btn">Submit Order</button>
+                </div>
+            </form>
+            <div class="confirmation-panel" id="confirmation-panel">
+                <div class="confirmation-title">Order Submitted Successfully!</div>
+                <div class="confirmation-text">
+                    Your order has been received.<br><br>
+                    One of our team members will reach out to you shortly to confirm your product selections, including colors and availability. Please verify all details with our representative. Once confirmed, you will be sent a secure payment link for your chosen payment method.<br><br>
+                    <strong>Important:</strong> Please complete your payment within 24 hours to avoid automatic cancellation of your order. We appreciate your prompt response and look forward to serving you!
+                </div>
+                <div class="confirmation-actions">
+                    <button type="button" class="confirm-btn" id="confirm-details-btn">I Understand</button>
+                </div>
+            </div>
+            <div class="success-panel" id="success-panel">
+                <div class="success-title">Thank You!</div>
+                <div class="success-text">
+                    You have successfully confirmed your order details.<br>
+                    Please watch for a payment link sent to your provided contact information. Complete your payment within 24 hours to secure your order.<br><br>
+                    If you have any questions or require assistance, feel free to contact us at <a href="mailto:contact@johnadoramarket.com">contact@johnadoramarket.com</a> or call <strong>+63 908 734 6291</strong>.
+                </div>
+            </div>
+            <div class="meta-note">
+                Your privacy and security are important to us. All order information is treated confidentially in accordance with our privacy policy.
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="refund-policy.html">Refund Policy</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Johnadora Retail Market. All rights reserved.<br>
+                #122 Malvar Street, Barangay San Isidro, Parañaque, NCR, Philippines | VAT Reg. No.: 004-276-832-000
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Responsive: Set order quantities and prices dynamically if needed
+        // For demonstration, these are hard-coded. Replace with dynamic data if integrating.
+        function formatTotal() {
+            let qtyTuna = parseInt(document.getElementById('qty-tuna').textContent) || 1;
+            let qtyNoodles = parseInt(document.getElementById('qty-noodles').textContent) || 2;
+            let qtyRice = parseInt(document.getElementById('qty-rice').textContent) || 1;
+            let qtySoap = parseInt(document.getElementById('qty-soap').textContent) || 1;
+            let total = (qtyTuna * 2.49) + (qtyNoodles * 0.79) + (qtyRice * 3.19) + (qtySoap * 1.39);
+            document.getElementById('order-total').textContent = '$' + total.toFixed(2);
+        }
+        formatTotal();
+
+        // Order submission and confirmation flow
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('order-form').style.display = 'none';
+            document.getElementById('confirmation-panel').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('order-summary-section').offsetTop, behavior: 'smooth' });
+        });
+
+        document.getElementById('confirm-details-btn').addEventListener('click', function() {
+            document.getElementById('confirmation-panel').style.display = 'none';
+            document.getElementById('success-panel').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('order-summary-section').offsetTop, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
