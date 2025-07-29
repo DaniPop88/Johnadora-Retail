@@ -656,8 +656,8 @@
                     <div class="product-info">
                         <div class="product-title">Century Tuna (Canned Good)</div>
                         <div class="product-desc">Protein-packed, easy to prepare.</div>
-                        <div class="product-meta">Qty: 10 | $2.49</div>
-                        <div class="product-price">$2.49</div>
+                        <div class="product-meta">Qty: 10 | ₱15.49</div>
+                        <div class="product-price">₱2.49</div>
                         <button class="add-cart-btn" data-product="Century Tuna" data-price="2.49">Add to Cart</button>
                     </div>
                 </div>
@@ -668,8 +668,8 @@
                     <div class="product-info">
                         <div class="product-title">Lucky Me! Instant Noodles</div>
                         <div class="product-desc">Quick, delicious comfort food.</div>
-                        <div class="product-meta">Qty: 16 | $0.79</div>
-                        <div class="product-price">$0.79</div>
+                        <div class="product-meta">Qty: 16 | ₱11.79</div>
+                        <div class="product-price">₱0.79</div>
                         <button class="add-cart-btn" data-product="Lucky Me! Instant Noodles" data-price="0.79">Add to Cart</button>
                     </div>
                 </div>
@@ -680,8 +680,8 @@
                     <div class="product-info">
                         <div class="product-title">Premium Dinorado Rice 1kg</div>
                         <div class="product-desc">Soft, fragrant, ideal for daily meals.</div>
-                        <div class="product-meta">Qty: 8 | $3.19</div>
-                        <div class="product-price">$3.19</div>
+                        <div class="product-meta">Qty: 8 | ₱3.19</div>
+                        <div class="product-price">₱3.19</div>
                         <button class="add-cart-btn" data-product="Premium Dinorado Rice 1kg" data-price="3.19">Add to Cart</button>
                     </div>
                 </div>
@@ -692,8 +692,8 @@
                     <div class="product-info">
                         <div class="product-title">Ariel Laundry Soap</div>
                         <div class="product-desc">Powerful cleaning, gentle on clothes.</div>
-                        <div class="product-meta">Qty: 12 | $1.39</div>
-                        <div class="product-price">$1.39</div>
+                        <div class="product-meta">Qty: 12 | ₱1.39</div>
+                        <div class="product-price">₱1.39</div>
                         <button class="add-cart-btn" data-product="Ariel Laundry Soap" data-price="1.39">Add to Cart</button>
                     </div>
                 </div>
@@ -704,8 +704,8 @@
                     <div class="product-info">
                         <div class="product-title">Head & Shoulders Shampoo</div>
                         <div class="product-desc">Fresh, anti-dandruff formula.</div>
-                        <div class="product-meta">Qty: 7 | $2.29</div>
-                        <div class="product-price">$2.29</div>
+                        <div class="product-meta">Qty: 7 | ₱2.29</div>
+                        <div class="product-price">₱2.29</div>
                         <button class="add-cart-btn" data-product="Head & Shoulders Shampoo" data-price="2.29">Add to Cart</button>
                     </div>
                 </div>
@@ -716,8 +716,8 @@
                     <div class="product-info">
                         <div class="product-title">Fresh Pandesal (6 pcs)</div>
                         <div class="product-desc">Soft, oven-baked each morning.</div>
-                        <div class="product-meta">Qty: 14 | $1.09</div>
-                        <div class="product-price">$1.09</div>
+                        <div class="product-meta">Qty: 14 | ₱1.09</div>
+                        <div class="product-price">₱1.09</div>
                         <button class="add-cart-btn" data-product="Fresh Pandesal (6 pcs)" data-price="1.09">Add to Cart</button>
                     </div>
                 </div>
@@ -872,12 +872,12 @@
                     const itemDiv = document.createElement('div');
                     itemDiv.style.marginBottom = '0.6rem';
                     itemDiv.innerHTML = `
-                        <strong>${item.name}</strong> &times; ${item.qty} <span style="color:#666;">($${item.price.toFixed(2)} each)</span>
-                        <button style="margin-left:6px;background:none;color:var(--primary);border:none;cursor:pointer;font-size:1rem;" onclick="removeCartItem(${idx})" title="Remove">&#10005;</button>
+                        <strong>₱{item.name}</strong> &times; ₱{item.qty} <span style="color:#666;">(₱₱{item.price.toFixed(2)} each)</span>
+                        <button style="margin-left:6px;background:none;color:var(--primary);border:none;cursor:pointer;font-size:1rem;" onclick="removeCartItem(₱{idx})" title="Remove">&#10005;</button>
                     `;
                     cartItemsDiv.appendChild(itemDiv);
                 });
-                cartTotalDiv.textContent = `Total: $${total.toFixed(2)}`;
+                cartTotalDiv.textContent = `Total: ₱₱{total.toFixed(2)}`;
                 checkoutBtn.disabled = false;
             }
             // Update floating fab count
@@ -927,12 +927,12 @@
                     const itemDiv = document.createElement('div');
                     itemDiv.style.marginBottom = '0.6rem';
                     itemDiv.innerHTML = `
-                        <strong>${item.name}</strong> &times; ${item.qty} <span style="color:#666;">($${item.price.toFixed(2)} each)</span>
-                        <button class="cart-modal-remove" onclick="removeCartItem(${idx})" title="Remove">&#10005;</button>
+                        <strong>₱{item.name}</strong> &times; ₱{item.qty} <span style="color:#666;">(₱₱{item.price.toFixed(2)} each)</span>
+                        <button class="cart-modal-remove" onclick="removeCartItem(₱{idx})" title="Remove">&#10005;</button>
                     `;
                     itemsDiv.appendChild(itemDiv);
                 });
-                totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+                totalDiv.textContent = `Total: ₱₱{total.toFixed(2)}`;
             }
         }
         function showCartModal() {
